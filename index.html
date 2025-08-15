@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>H56 Read More Generator | WhatsApp, Telegram, Inline, & More</title>
+  <meta name="description" content="H56 Read More Generator oleh Muhammad Ali Hasyim - Buat pesan WhatsApp, Telegram, dan platform lain dengan fitur read more, termasuk mode sembunyi datar (inline) profesional. Praktis, responsif, dan mudah digunakan untuk kebutuhan chat modern Anda.">
+  <meta name="author" content="Muhammad Ali Hasyim">
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+  <!-- TailwindCSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- DaisyUI -->
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" />
+
+  <style>
+    :root {
+      --sky-hero-from: #dbeafe;
+      --sky-hero-to: #7dd3fc;
+      --glass-blur: 16px;
+      --glass-border: rgba(255,255,255,0.4);
+      --glass-bg: rgba(255,255,255,0.45);
+      --glass-shadow: 0 12px 35px rgba(56,189,248,0.13), 0 2px 6px rgba(0,0,0,0.08);
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #dbeafe 0%, #7dd3fc 100%);
+      min-height: 100vh;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(25px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .fade-in { animation: fadeIn 0.7s cubic-bezier(.57,.21,.69,1.25) both; }
+    .btn-glow:hover { box-shadow: 0 0 22px 4px rgba(56,189,248,0.18), 0 2px 8px rgba(56,189,248,0.10); transform: translateY(-2px) scale(1.04); }
+    .glass-card { background: var(--glass-bg); backdrop-filter: blur(var(--glass-blur)); border: 1.5px solid var(--glass-border); box-shadow: var(--glass-shadow);}
+    .btn-animate:active { transform: scale(0.97); box-shadow: 0 0 0 0 rgba(56,189,248,0.0);}
+    .icon-rotate { transition: transform 0.3s cubic-bezier(.57,.21,.69,1.25);}
+    .btn:active .icon-rotate { transform: rotate(-20deg) scale(1.12);}
+    .range-info::-webkit-slider-thumb { background: #38bdf8 !important; box-shadow: 0 0 0 3px #bae6fd;}
+    .range-info::-moz-range-thumb { background: #38bdf8 !important;}
+    .range-info::-ms-thumb { background: #38bdf8 !important;}
+    @media (max-width: 600px) {.fade-in {animation-duration: 1s;}}
+    .toast {z-index: 9999;}
+    #flatSeparatorWrap { display: none;}
+    .show-flat-separator { display: block !important; animation: fadeIn 0.5s;}
+  </style>
+</head>
+<body class="bg-gradient-to-br from-[var(--sky-hero-from)] to-[var(--sky-hero-to)] font-sans text-sky-900">
+  <main class="max-w-2xl mx-auto p-4 md:p-8 fade-in">
+    <!-- Header -->
+    <section class="text-center mb-10">
+      <h1 class="text-4xl md:text-6xl font-extrabold drop-shadow-sm tracking-tight">
+        <span class="bg-gradient-to-r from-sky-400 via-sky-600 to-blue-500 bg-clip-text text-transparent">H56 Read More Generator</span>
+      </h1>
+      <p class="mt-4 text-sky-800/80 text-base md:text-lg font-medium">
+        Buat pesan dengan <em class="text-sky-500 font-semibold">read more</em> tersembunyi untuk WhatsApp, Telegram, dll.
+      </p>
+      <div class="mt-2 text-xs text-sky-700/70">
+        <span class="font-semibold">✨ Fitur baru:</span> <span class="bg-sky-100 px-2 py-1 rounded-lg text-sky-600">Sembunyi Datar</span> (<b>inline:</b> hasil seperti "Halo..read more" jadi "Halo semuanya" setelah diklik readmore)
+      </div>
+      <div class="mt-4 text-sm text-sky-900 font-bold">
+        <span>Dikembangkan oleh Muhammad Ali Hasyim</span>
+      </div>
+    </section>
+
+    <!-- Card -->
+    <div class="glass-card rounded-3xl p-3 md:p-6 transition-all duration-300 hover:shadow-[0_16px_40px_rgba(56,189,248,0.15)] shadow-xl">
+      <div class="card-body space-y-8">
+
+        <!-- Inputs grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-7">
+          <!-- Teks Depan -->
+          <div>
+            <label class="label"><span class="label-text font-semibold text-sky-700">Teks depan</span></label>
+            <textarea id="frontText" class="textarea textarea-bordered w-full h-44 rounded-xl focus:outline-none focus:ring-2 focus:ring-sky-400 transition-all bg-white/80" placeholder="Teks yang terlihat sebelum ‘Read more’..."></textarea>
+          </div>
+          <!-- Teks Belakang -->
+          <div>
+            <label class="label"><span class="label-text font-semibold text-sky-700">Teks belakang (tersembunyi)</span></label>
+            <textarea id="backText" class="textarea textarea-bordered w-full h-44 rounded-xl focus:outline-none focus:ring-2 focus:ring-sky-400 transition-all bg-white/80" placeholder="Teks yang muncul setelah dibuka…"></textarea>
+          </div>
+        </div>
+
+        <!-- Options -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 items-end">
+          <!-- Preset -->
+          <div>
+            <label class="label"><span class="label-text font-semibold text-sky-700">Preset platform</span></label>
+            <select id="preset" class="select select-bordered w-full rounded-xl focus:outline-none focus:ring-2 focus:ring-sky-400 bg-white/90">
+              <option value="whatsapp" selected>WhatsApp (disarankan)</option>
+              <option value="telegram">Telegram</option>
+              <option value="generic">Generic</option>
+              <option value="flat">Sembunyi Datar (inline)</option>
+            </select>
+          </div>
+          <!-- Kekuatan Read More -->
+          <div>
+            <label class="label"><span class="label-text font-semibold text-sky-700">Kekuatan Read More</span></label>
+            <input id="strength" type="range" min="1" max="5" value="3" class="range range-info" />
+            <div class="flex justify-between text-xs opacity-70 px-1 font-semibold text-sky-600">
+              <span>Ringan</span><span>Default</span><span>Kuat</span>
+            </div>
+          </div>
+          <!-- Tombol Generate -->
+          <div class="flex sm:justify-end w-full">
+            <button id="generateBtn" class="btn btn-info btn-block sm:btn-wide font-semibold rounded-xl shadow-md btn-glow btn-animate transition-all flex gap-2 items-center justify-center">
+              <span class="icon-rotate">
+                <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M12 5v14m0 0l-5-5m5 5l5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              Generate
+              <span id="loadingSpin" class="hidden ml-2">
+                <svg class="animate-spin" width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#bae6fd" stroke-width="4" stroke-dasharray="32 12"></circle></svg>
+              </span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Flat Separator Option (hidden by default) -->
+        <div id="flatSeparatorWrap" class="mt-2">
+          <label class="label"><span class="label-text font-semibold text-sky-700">Teks pemicu read more (default: ...read more)</span></label>
+          <input id="flatSeparator" type="text" class="input input-bordered w-full rounded-xl focus:outline-none focus:ring-2 focus:ring-sky-400 bg-white/90" value="...read more" maxlength="25" autocomplete="off" />
+          <div class="text-xs text-sky-600 mt-1">Contoh: ...read more, [read more], dst. Setelah diklik akan digantikan oleh teks belakang.</div>
+        </div>
+
+        <!-- Output -->
+        <div>
+          <label class="label"><span class="label-text font-semibold text-sky-700">Result (siap disalin)</span></label>
+          <textarea id="result" class="textarea textarea-bordered w-full h-52 rounded-xl focus:outline-none focus:ring-2 focus:ring-sky-400 bg-white/80" readonly placeholder="Hasil akan muncul di sini…"></textarea>
+          <div class="mt-4 flex flex-wrap gap-3">
+            <button id="copyBtn" class="btn btn-outline btn-info rounded-xl shadow-sm btn-glow btn-animate flex gap-2 items-center">
+              <span class="icon-rotate">
+                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.1" viewBox="0 0 24 24"><path d="M8 16h8a2 2 0 0 0 2-2V8M8 16V18a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2H8z" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 2H6a2 2 0 0 0-2 2v12" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              Salin
+            </button>
+            <button id="clearBtn" class="btn btn-ghost rounded-xl btn-animate flex gap-2 items-center">
+              <span class="icon-rotate">
+                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.1" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              Bersihkan
+            </button>
+          </div>
+          <p class="mt-3 text-xs text-sky-900/70">
+            💡 <span class="font-bold text-sky-600">Tip:</span> Setelah disalin, tempelkan di WhatsApp/Telegram. Bila terlalu pendek, naikkan <em>Kekuatan Read More</em>.<br>
+            <span class="text-sky-500 font-semibold">Sembunyi Datar</span> cocok untuk pesan yang ingin tetap satu baris seperti: <code>Halo..read more</code> jadi <code>Halo semuanya</code> setelah diklik readmore.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="mt-10 text-center text-sky-900/70 text-sm">
+      Dibuat dengan <span class="text-pink-500">❤️</span> menggunakan <span class="font-semibold text-sky-600">TailwindCSS + DaisyUI</span> — Tema skyblue by H56.<br>
+      <span class="font-bold text-sky-800">Copyright © 2025 Muhammad Ali Hasyim</span>
+    </footer>
+  </main>
+
+  <script>
+    function makeInvisibleBlock(lines, zwsPerLine) {
+      const zws = "\u200B".repeat(zwsPerLine);
+      const brailleBlank = "\u2800".repeat(Math.max(1, Math.floor(zwsPerLine / 4)));
+      const oneLine = zws + brailleBlank;
+      return ("\n" + oneLine).repeat(lines) + "\n";
+    }
+
+    function makeFlatHidden(length) {
+      // Membuat blok invisible cukup panjang agar WhatsApp men-trigger read more dan mengganti separator
+      // Panjangnya dipilih agar minus karakter (misal -2638) pada WhatsApp tercapai
+      // Kombinasi zero-width space dan blank braille
+      const zws = "\u200B".repeat(length);
+      const brailleBlank = "\u2800".repeat(Math.max(1, Math.floor(length / 4)));
+      return zws + brailleBlank;
+    }
+
+    function getPresetConfig(preset, strength) {
+      const base = { lines: 25, zws: 200 };
+      const mult = { 1: 0.6, 2: 0.85, 3: 1.0, 4: 1.35, 5: 1.8 }[strength] || 1.0;
+      let platformAdj = 1.0;
+      switch (preset) {
+        case 'telegram': platformAdj = 0.85; break;
+        case 'generic': platformAdj = 0.9; break;
+        case 'whatsapp':
+        default: platformAdj = 1.0;
+      }
+      return {
+        lines: Math.ceil(base.lines * mult * platformAdj),
+        zws: Math.ceil(base.zws * mult)
+      };
+    }
+
+    function showLoading(btn, show) {
+      document.getElementById('loadingSpin').classList.toggle('hidden', !show);
+      btn.disabled = show;
+      btn.classList.toggle('btn-disabled', show);
+    }
+
+    function updateFlatSeparatorVisibility() {
+      var preset = document.getElementById('preset').value;
+      var wrap = document.getElementById('flatSeparatorWrap');
+      if (preset === "flat") {
+        wrap.classList.add('show-flat-separator');
+      } else {
+        wrap.classList.remove('show-flat-separator');
+      }
+    }
+
+    function generate() {
+      const btn = document.getElementById('generateBtn');
+      showLoading(btn, true);
+      setTimeout(() => {
+        const front = document.getElementById('frontText').value || '';
+        const back = document.getElementById('backText').value || '';
+        const preset = document.getElementById('preset').value;
+        const strength = parseInt(document.getElementById('strength').value, 10);
+        const cfg = getPresetConfig(preset, strength);
+
+        let result = "";
+        if (preset === "flat") {
+          // Sembunyi Datar (inline): Teks depan + separator + blok invisible (panjang) + teks belakang
+          // WhatsApp akan menampilkan "Halo..read more", setelah diklik jadi "Halo semuanya"
+          const separator = document.getElementById('flatSeparator').value || "...read more";
+          const hiddenLength = 2638 + separator.length + front.length;
+          const invisibleFlat = makeFlatHidden(hiddenLength);
+
+          // Format: [teks depan][separator][invisible][teks belakang]
+          result = `${front}${separator}${invisibleFlat}${back}`.trim();
+        } else {
+          // Default: blok invisible multiline
+          const hiddenBlock = makeInvisibleBlock(cfg.lines, cfg.zws);
+          result = `${front}\n\n${hiddenBlock}\n${back}`.trim();
+        }
+        document.getElementById('result').value = result;
+        showLoading(btn, false);
+      }, 350); // animation delay
+    }
+
+    async function copyResult() {
+      const text = document.getElementById('result').value;
+      if (!text) return;
+      try {
+        await navigator.clipboard.writeText(text);
+        toast('Hasil disalin ✅');
+      } catch {
+        const out = document.getElementById('result');
+        out.select();
+        document.execCommand('copy');
+        toast('Disalin (fallback) ✅');
+      }
+    }
+
+    function clearAll() {
+      document.getElementById('frontText').value = '';
+      document.getElementById('backText').value = '';
+      document.getElementById('result').value = '';
+      toast('Form dibersihkan');
+      generate();
+    }
+
+    function toast(message) {
+      const t = document.createElement('div');
+      t.className = 'toast toast-end';
+      t.innerHTML = `<div class="alert alert-info shadow-lg"><span>${message}</span></div>`;
+      document.body.appendChild(t);
+      setTimeout(() => t.remove(), 1500);
+    }
+
+    document.getElementById('generateBtn').addEventListener('click', generate);
+    document.getElementById('copyBtn').addEventListener('click', copyResult);
+    document.getElementById('clearBtn').addEventListener('click', clearAll);
+
+    ['frontText','backText','preset','strength','flatSeparator'].forEach(id => {
+      document.getElementById(id).addEventListener('input', () => {
+        queueMicrotask(generate);
+      });
+    });
+
+    document.getElementById('preset').addEventListener('change', () => {
+      updateFlatSeparatorVisibility();
+      queueMicrotask(generate);
+    });
+
+    window.onload = function() {
+      updateFlatSeparatorVisibility();
+      generate();
+    };
+  </script>
+</body>
+                                              </html>
