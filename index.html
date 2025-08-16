@@ -6,26 +6,23 @@
   <title>H56 Read More Generator | WhatsApp, Telegram, Inline, & More</title>
   <meta name="description" content="H56 Read More Generator oleh Muhammad Ali Hasyim - Buat pesan WhatsApp, Telegram, dan platform lain dengan fitur read more, termasuk mode sembunyi datar (inline) profesional. Praktis, responsif, dan mudah digunakan untuk kebutuhan chat modern Anda.">
   <meta name="author" content="Muhammad Ali Hasyim">
-  <!-- Favicon -->
   <link rel="icon" type="image/png" href="H56.png">
-  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
-  <!-- TailwindCSS via CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- DaisyUI -->
   <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" />
 
   <style>
     :root {
       --brown-hero-from: #f9f6f2;
       --brown-hero-to: #b3937e;
-      --brown-glass-bg: rgba(243, 236, 225, 0.8);
-      --brown-glass-border: rgba(179, 147, 126, 0.35);
-      --brown-glass-shadow: 0 12px 35px rgba(179, 147, 126,0.13), 0 2px 6px rgba(0,0,0,0.08);
-      --brown-btn: #c8ad9e;
-      --brown-btn-hover: #b3937e;
-      --brown-accent: #a0754e;
-      --brown-text: #6f4e37;
+      --brown-glass-bg: rgba(243, 236, 225, 0.9);
+      --brown-glass-border: rgba(179, 147, 126, 0.45);
+      --brown-glass-shadow: 0 14px 40px rgba(179,147,126,0.18), 0 4px 12px rgba(0,0,0,0.08);
+      --brown-btn: #b3937e;
+      --brown-btn-hover: #a0754e;
+      --brown-accent: #7a5431;
+      --brown-text: #4e3724;
+      --brown-dark: #3a2415;
       --brown-light: #f7e9dc;
       --glass-blur: 16px;
     }
@@ -33,7 +30,7 @@
       font-family: 'Poppins', sans-serif;
       background: linear-gradient(135deg, var(--brown-hero-from) 0%, var(--brown-hero-to) 100%);
       min-height: 100vh;
-      color: var(--brown-text);
+      color: var(--brown-dark);
     }
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(25px); }
@@ -49,7 +46,7 @@
     .glass-card {
       background: var(--brown-glass-bg);
       backdrop-filter: blur(var(--glass-blur));
-      border: 1.5px solid var(--brown-glass-border);
+      border: 2px solid var(--brown-glass-border);
       box-shadow: var(--brown-glass-shadow);
     }
     .btn-animate:active {
@@ -68,8 +65,7 @@
     .toast {z-index: 9999;}
     #flatSeparatorWrap { display: none;}
     .show-flat-separator { display: block !important; animation: fadeIn 0.5s;}
-    /* Custom brown accents */
-    .text-brown { color: var(--brown-text);}
+    .text-brown { color: var(--brown-dark);}
     .bg-brown { background: var(--brown-btn);}
     .bg-brown-light { background: var(--brown-light);}
     .border-brown { border-color: var(--brown-glass-border);}
@@ -80,7 +76,10 @@
     .select, .input, .textarea {
       background: #f9f6f2 !important;
       border-color: var(--brown-glass-border) !important;
-      color: var(--brown-text) !important;
+      color: var(--brown-dark) !important;
+      font-weight: 500;
+      font-size: 1rem;
+      letter-spacing: 0.03em;
     }
     .select:focus, .input:focus, .textarea:focus {
       border-color: var(--brown-accent) !important;
@@ -90,6 +89,8 @@
       background: var(--brown-btn);
       color: #fff;
       border-color: var(--brown-accent);
+      font-weight: 600;
+      font-size: 1.08rem;
     }
     .btn-outline.btn-info:hover, .btn-info:hover {
       background: var(--brown-btn-hover);
@@ -97,27 +98,90 @@
     }
     .btn-ghost {
       color: var(--brown-accent);
+      font-weight: 600;
     }
     .alert-info {
       background: var(--brown-light);
-      color: var(--brown-text);
+      color: var(--brown-dark);
       border-color: var(--brown-accent);
+      font-weight: 600;
     }
     ::selection {
       background: var(--brown-accent);
       color: #fff;
     }
-    /* Logo style */
     .logo-h56 {
-      height: 54px;
-      width: 54px;
-      margin-bottom: 10px;
-      box-shadow: 0 6px 22px -6px var(--brown-accent);
-      border-radius: 16px;
+      height: 72px;
+      width: 72px;
+      margin-bottom: 16px;
+      box-shadow: 0 10px 28px -8px var(--brown-accent);
+      border-radius: 18px;
       object-fit: contain;
       background: #fff;
-      border: 2px solid var(--brown-accent);
+      border: 3px solid var(--brown-accent);
       display: inline-block;
+    }
+    .main-heading {
+      font-size: 2.9rem;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      line-height: 1.13;
+      color: var(--brown-dark);
+    }
+    @media (min-width: 768px) {
+      .main-heading {
+        font-size: 4.3rem;
+      }
+      .logo-h56 {
+        height: 96px;
+        width: 96px;
+        margin-bottom: 22px;
+      }
+    }
+    .label-text {
+      font-size: 1.08rem !important;
+      font-weight: 700 !important;
+      color: var(--brown-accent) !important;
+      letter-spacing: 0.01em;
+    }
+    .result-label {
+      font-size: 1.05rem !important;
+      font-weight: 800 !important;
+      color: var(--brown-accent) !important;
+      letter-spacing: 0.01em;
+    }
+    .result-area {
+      font-size: 1.08rem;
+      font-weight: 600;
+      color: var(--brown-dark) !important;
+      background: var(--brown-light) !important;
+      border: 2px solid var(--brown-btn-hover) !important;
+      box-shadow: 0 0 16px rgba(179,147,126,0.11);
+      resize: vertical;
+    }
+    .card-body {
+      padding: 1.5rem 0.8rem;
+    }
+    .input, .select, .textarea {
+      font-size: 1.01rem;
+    }
+    .info-tip {
+      color: var(--brown-accent) !important;
+      font-weight: 600;
+      padding: 2px 0;
+    }
+    .footer {
+      color: var(--brown-accent);
+      font-weight: 600;
+      font-size: 1.03rem;
+      margin-top: 2.8rem;
+    }
+    .footer span {
+      color: var(--brown-text);
+      font-weight: 800;
+    }
+    .shadow-xl {
+      box-shadow: 0 14px 40px rgba(179,147,126,0.15), 0 4px 12px rgba(0,0,0,0.1);
     }
   </style>
 </head>
@@ -126,43 +190,44 @@
     <!-- Header -->
     <section class="text-center mb-10">
       <img src="H56.png" alt="H56 Logo" class="logo-h56 mx-auto" />
-      <h1 class="text-4xl md:text-6xl font-extrabold drop-shadow-sm tracking-tight">
+      <h1 class="main-heading font-extrabold drop-shadow-sm tracking-tight">
         <span class="bg-gradient-to-r from-[var(--brown-accent)] via-[var(--brown-btn-hover)] to-[var(--brown-btn)] bg-clip-text text-transparent">H56 Read More Generator</span>
       </h1>
-      <p class="mt-4 text-brown text-base md:text-lg font-medium">
-        Buat pesan dengan <em class="font-semibold" style="color: var(--brown-accent);">read more</em> tersembunyi untuk WhatsApp, Telegram, dll.
+      <p class="mt-5 text-brown text-lg md:text-xl font-semibold info-tip">
+        Buat pesan dengan <span class="font-extrabold" style="color: var(--brown-accent);">read more</span> tersembunyi untuk WhatsApp, Telegram, dll.
       </p>
-      <div class="mt-2 text-xs" style="color: #a0754e;">
-        <span class="font-semibold">✨ Fitur baru:</span> <span class="bg-brown-light px-2 py-1 rounded-lg" style="color: var(--brown-accent);">Sembunyi Datar</span> (<b>inline:</b> hasil seperti "Halo..read more" jadi "Halo semuanya" setelah diklik readmore dan tetap di satu baris)
+      <div class="mt-2 text-sm" style="color: var(--brown-accent); font-weight:700;">
+        <span class="font-semibold">✨ Fitur baru:</span> <span class="bg-brown-light px-2 py-1 rounded-lg" style="color: var(--brown-accent); font-weight:800;">Sembunyi Datar</span>
+        (<b>inline:</b> hasil seperti "Halo..read more" jadi "Halo semuanya" setelah diklik readmore dan tetap di satu baris)
       </div>
-      <div class="mt-4 text-sm font-bold" style="color: var(--brown-accent);">
+      <div class="mt-4 text-base font-bold" style="color: var(--brown-btn-hover);">
         <span>Dikembangkan oleh Muhammad Ali Hasyim</span>
       </div>
     </section>
 
     <!-- Card -->
-    <div class="glass-card rounded-3xl p-3 md:p-6 transition-all duration-300 hover:shadow-brown shadow-xl">
-      <div class="card-body space-y-8">
+    <div class="glass-card rounded-3xl p-5 md:p-8 transition-all duration-300 hover:shadow-brown shadow-xl">
+      <div class="card-body space-y-10">
 
         <!-- Inputs grid -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-7">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
           <!-- Teks Depan -->
           <div>
-            <label class="label"><span class="label-text font-semibold" style="color: var(--brown-accent);">Teks depan</span></label>
+            <label class="label"><span class="label-text">Teks depan</span></label>
             <textarea id="frontText" class="textarea textarea-bordered w-full h-44 rounded-xl focus:outline-none transition-all" placeholder="Teks yang terlihat sebelum ‘Read more’..."></textarea>
           </div>
           <!-- Teks Belakang -->
           <div>
-            <label class="label"><span class="label-text font-semibold" style="color: var(--brown-accent);">Teks belakang (tersembunyi)</span></label>
+            <label class="label"><span class="label-text">Teks belakang (tersembunyi)</span></label>
             <textarea id="backText" class="textarea textarea-bordered w-full h-44 rounded-xl focus:outline-none transition-all" placeholder="Teks yang muncul setelah dibuka…"></textarea>
           </div>
         </div>
 
         <!-- Options -->
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 items-end">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-7 items-end">
           <!-- Preset -->
           <div>
-            <label class="label"><span class="label-text font-semibold" style="color: var(--brown-accent);">Preset platform</span></label>
+            <label class="label"><span class="label-text">Preset platform</span></label>
             <select id="preset" class="select select-bordered w-full rounded-xl focus:outline-none bg-brown-light">
               <option value="whatsapp" selected>WhatsApp (disarankan)</option>
               <option value="telegram">Telegram</option>
@@ -172,9 +237,9 @@
           </div>
           <!-- Kekuatan Read More -->
           <div>
-            <label class="label"><span class="label-text font-semibold" style="color: var(--brown-accent);">Kekuatan Read More</span></label>
+            <label class="label"><span class="label-text">Kekuatan Read More</span></label>
             <input id="strength" type="range" min="1" max="5" value="3" class="range range-info" />
-            <div class="flex justify-between text-xs opacity-70 px-1 font-semibold" style="color: var(--brown-accent);">
+            <div class="flex justify-between text-xs opacity-80 px-1 font-semibold info-tip">
               <span>Ringan</span><span>Default</span><span>Kuat</span>
             </div>
           </div>
@@ -194,15 +259,15 @@
 
         <!-- Flat Separator Option (hidden by default) -->
         <div id="flatSeparatorWrap" class="mt-2">
-          <label class="label"><span class="label-text font-semibold" style="color: var(--brown-accent);">Teks pemicu read more (default: ...read more)</span></label>
+          <label class="label"><span class="label-text">Teks pemicu read more (default: ...read more)</span></label>
           <input id="flatSeparator" type="text" class="input input-bordered w-full rounded-xl focus:outline-none bg-brown-light" value="...read more" maxlength="25" autocomplete="off" />
-          <div class="text-xs mt-1" style="color: var(--brown-accent);">Contoh: ...read more, [read more], dst. Setelah diklik akan digantikan oleh teks belakang dan tetap sejajar dalam satu baris.</div>
+          <div class="text-xs mt-1 info-tip">Contoh: ...read more, [read more], dst. Setelah diklik akan digantikan oleh teks belakang dan tetap sejajar dalam satu baris.</div>
         </div>
 
         <!-- Output -->
         <div>
-          <label class="label"><span class="label-text font-semibold" style="color: var(--brown-accent);">Result (siap disalin)</span></label>
-          <textarea id="result" class="textarea textarea-bordered w-full h-52 rounded-xl focus:outline-none bg-brown-light" readonly placeholder="Hasil akan muncul di sini…"></textarea>
+          <label class="label"><span class="result-label">Result (siap disalin)</span></label>
+          <textarea id="result" class="textarea result-area w-full h-52 rounded-xl focus:outline-none bg-brown-light" readonly placeholder="Hasil akan muncul di sini…"></textarea>
           <div class="mt-4 flex flex-wrap gap-3">
             <button id="copyBtn" class="btn btn-outline btn-info rounded-xl shadow-sm btn-glow btn-animate flex gap-2 items-center">
               <span class="icon-rotate">
@@ -217,7 +282,7 @@
               Bersihkan
             </button>
           </div>
-          <p class="mt-3 text-xs" style="color: var(--brown-text);">
+          <p class="mt-3 text-xs info-tip">
             💡 <span class="font-bold" style="color: var(--brown-accent);">Tip:</span> Setelah disalin, tempelkan di WhatsApp/Telegram. Bila terlalu pendek, naikkan <em>Kekuatan Read More</em>.<br>
             <span class="font-semibold" style="color: var(--brown-accent);">Sembunyi Datar</span> cocok untuk pesan yang ingin tetap satu baris seperti: <code>Halo..read more</code> jadi <code>Halo semuanya</code> setelah diklik readmore.
           </p>
@@ -226,9 +291,9 @@
     </div>
 
     <!-- Footer -->
-    <footer class="mt-10 text-center text-sm" style="color: var(--brown-accent);">
+    <footer class="footer text-center">
       Dibuat dengan <span style="color: #e67e7e;">❤️</span> menggunakan <span class="font-semibold" style="color: var(--brown-btn-hover);">TailwindCSS + DaisyUI</span> — Tema white-brown by H56.<br>
-      <span class="font-bold" style="color: var(--brown-text);">Copyright © 2025 Muhammad Ali Hasyim</span>
+      <span>Copyright © 2025 Muhammad Ali Hasyim</span>
     </footer>
   </main>
 
@@ -359,4 +424,4 @@
     };
   </script>
 </body>
-  </html>
+</html>
