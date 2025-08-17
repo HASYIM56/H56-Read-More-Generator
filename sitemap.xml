@@ -1,61 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset
-  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-  xmlns:xhtml="http://www.w3.org/1999/xhtml"
->
-  <!-- Homepage -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://h56-readmore-generator.netlify.app/</loc>
     <lastmod>2025-08-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-  </url>
-
-  <!-- Read More Generator (main page, same as homepage) -->
-  <url>
-    <loc>https://h56-readmore-generator.netlify.app/read-more-generator</loc>
-    <lastmod>2025-08-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <!-- WhatsApp Preset (if you plan to create a separate page) -->
-  <url>
-    <loc>https://h56-readmore-generator.netlify.app/whatsapp</loc>
-    <lastmod>2025-08-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- Telegram Preset (if you plan to create a separate page) -->
-  <url>
-    <loc>https://h56-readmore-generator.netlify.app/telegram</loc>
-    <lastmod>2025-08-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- Inline/Flat Preset (if you plan to create a separate page) -->
-  <url>
-    <loc>https://h56-readmore-generator.netlify.app/inline</loc>
-    <lastmod>2025-08-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <!-- About (if you have/about page) -->
-  <url>
-    <loc>https://h56-readmore-generator.netlify.app/about</loc>
-    <lastmod>2025-08-17</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.4</priority>
-  </url>
-
-  <!-- Privacy Policy (if you have/privacy-policy page) -->
-  <url>
-    <loc>https://h56-readmore-generator.netlify.app/privacy-policy</loc>
-    <lastmod>2025-08-17</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
   </url>
 </urlset>
