@@ -10,10 +10,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" />
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
     :root {
       --brown-hero-from: #f9f6f2;
-      --brown-hero-to: #b3937e;
+      --brown-hero-to: #f9f6f2; /* Diubah supaya tidak gradient */
       --brown-glass-bg: rgba(243, 236, 225, 0.9);
       --brown-glass-border: rgba(179, 147, 126, 0.45);
       --brown-glass-shadow: 0 14px 40px rgba(179,147,126,0.18), 0 4px 12px rgba(0,0,0,0.08);
@@ -27,13 +29,12 @@
     }
     body {
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, var(--brown-hero-from) 0%, var(--brown-hero-to) 100%);
+      background: var(--brown-hero-from);
       min-height: 100vh;
       color: var(--brown-dark);
       position: relative;
       z-index: 1;
     }
-    /* Particles background styles */
     #particles-js {
       position: fixed;
       width: 100vw;
@@ -77,13 +78,13 @@
     .toast {z-index: 9999;}
     #flatSeparatorWrap { display: none;}
     .show-flat-separator { display: block !important; animation: fadeIn 0.5s;}
-   -brown { color: var(--brown-dark);}
+    -brown { color: var(--brown-dark);}
     .bg-brown { background: var(--brown-btn);}
     .bg-brown-light { background: var(--brown-light);}
     .border-brown { border-color: var(--brown-glass-border);}
     .shadow-brown { box-shadow: var(--brown-glass-shadow);}
     .bg-gradient-brown {
-      background: linear-gradient(135deg, var(--brown-hero-from) 0%, var(--brown-hero-to) 100%);
+      background: var(--brown-hero-from);
     }
     .select, .input, .textarea {
       background: #f9f6f2 !important;
@@ -182,15 +183,107 @@
       font-weight: 600;
       padding: 2px 0;
     }
+    /* Footer improvement styles */
     .footer {
+      background: var(--brown-glass-bg);
+      border-top: 2px solid var(--brown-glass-border);
+      box-shadow: 0 0 18px -8px var(--brown-accent);
+      backdrop-filter: blur(var(--glass-blur));
+      margin-top: 2.8rem;
+      padding: 2.2rem 1.2rem 1.2rem 1.2rem;
+      border-radius: 28px 28px 0 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.3em;
       color: var(--brown-accent);
       font-weight: 600;
       font-size: 1.03rem;
-      margin-top: 2.8rem;
     }
-    .footer span {
+    .footer-main-wrap {
+      width: 100%;
+      max-width: 700px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1em;
+    }
+    .footer-social {
+      width: 100%;
+      margin-top: 0.5rem;
+      margin-bottom: 0.9rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(180px,1fr));
+      gap: 1.2em;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    .footer-social a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5em;
+      font-size: 1.18rem;
+      font-weight: 700;
+      color: var(--brown-accent);
+      background: var(--brown-light);
+      border-radius: 18px;
+      padding: 0.45em 1em;
+      text-decoration: none;
+      transition: background 0.22s, color 0.22s, box-shadow 0.22s;
+      box-shadow: 0 2px 8px -6px var(--brown-accent);
+      border: 1.5px solid var(--brown-glass-border);
+    }
+    .footer-social a:hover {
+      background: var(--brown-accent);
+      color: #fff;
+      box-shadow: 0 6px 26px -8px var(--brown-accent);
+      transform: translateY(-2px) scale(1.07);
+    }
+    .footer-social i {
+      font-size: 1.34em;
+      transition: transform 0.22s;
+    }
+    .footer-social a:hover i {
+      transform: scale(1.18) rotate(-7deg);
+    }
+    .footer-info {
+      background: linear-gradient(90deg, #f7e9dc 70%, #fff8 100%);
+      border-radius: 12px;
+      font-size: 1.04rem;
+      font-weight: 600;
+      color: var(--brown-accent);
+      margin-bottom: 0.7em;
+      padding: 0.45em 1em;
+      box-shadow: 0 1px 12px -7px var(--brown-btn-hover);
+      text-align: center;
+    }
+    .footer-copyright {
+      margin-top: 0.6em;
+      font-size: 1rem;
+      font-weight: 700;
       color: var(--brown-text);
+      text-align: center;
+      letter-spacing: 0.012em;
+    }
+    .footer-copyright span {
+      color: var(--brown-btn-hover);
       font-weight: 800;
+    }
+    @media (max-width: 640px) {
+      .footer {
+        padding: 1.4rem 0.6rem 0.7rem 0.6rem;
+        border-radius: 22px 22px 0 0;
+        font-size: 0.97rem;
+      }
+      .footer-main-wrap {
+        max-width: 99vw;
+        gap: 0.7em;
+      }
+      .footer-info { font-size: 0.99rem; padding: 0.45em 0.5em;}
+      .footer-social { grid-template-columns: 1fr; gap: 0.7em;}
+      .footer-social a { font-size: 1rem; padding: 0.3em 0.6em;}
     }
     .shadow-xl {
       box-shadow: 0 14px 40px rgba(179,147,126,0.15), 0 4px 12px rgba(0,0,0,0.1);
@@ -351,10 +444,27 @@
       </div>
     </div>
 
-    <!-- Footer -->
+    <!-- Footer Improved -->
     <footer class="footer text-center">
-      Dibuat dengan <span style="color: #e67e7e;">❤️</span> menggunakan <span class="font-semibold" style="color: var(--brown-btn-hover);">TailwindCSS + DaisyUI</span> — Tema white-brown by H56.<br>
-      <span>Copyright © 2025 Muhammad Ali Hasyim</span>
+      <div class="footer-main-wrap">
+        <div class="footer-social">
+          <a href="https://youtube.com/@HASYIM56" target="_blank" rel="noopener">
+            <i class="fab fa-youtube"></i> <span>YouTube @HASYIM56</span>
+          </a>
+          <a href="https://instagram.com/hasyim56_modder" target="_blank" rel="noopener">
+            <i class="fab fa-instagram"></i> <span>IG @hasyim56_modder</span>
+          </a>
+          <a href="https://github.com/HASYIM56" target="_blank" rel="noopener">
+            <i class="fab fa-github"></i> <span>GitHub HASYIM56</span>
+          </a>
+        </div>
+        <div class="footer-info">
+          Dibuat dengan <span style="color: #e67e7e;">❤️</span> menggunakan <span class="font-semibold" style="color: var(--brown-btn-hover);">TailwindCSS + DaisyUI</span> — Tema white-brown by H56.
+        </div>
+        <div class="footer-copyright">
+          <span>Copyright © 2025 Muhammad Ali Hasyim</span>
+        </div>
+      </div>
     </footer>
   </main>
 
@@ -453,7 +563,6 @@
       return ("\n" + oneLine).repeat(lines) + "\n";
     }
 
-    // Untuk fitur inline yang benar-benar menggantikan separator dengan teks belakang di baris yang sama
     function makeFlatHidden(separator, front, strength) {
       let base = 2700;
       let mult = { 1: 0.55, 2: 0.8, 3: 1.0, 4: 1.35, 5: 1.7 }[strength] || 1.0;
