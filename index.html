@@ -15,7 +15,7 @@
   <style>
     :root {
       --brown-hero-from: #f9f6f2;
-      --brown-hero-to: #f9f6f2; /* Diubah supaya tidak gradient */
+      --brown-hero-to: #f9f6f2;
       --brown-glass-bg: rgba(243, 236, 225, 0.9);
       --brown-glass-border: rgba(179, 147, 126, 0.45);
       --brown-glass-shadow: 0 14px 40px rgba(179,147,126,0.18), 0 4px 12px rgba(0,0,0,0.08);
@@ -183,7 +183,6 @@
       font-weight: 600;
       padding: 2px 0;
     }
-    /* Footer improvement styles */
     .footer {
       background: var(--brown-glass-bg);
       border-top: 2px solid var(--brown-glass-border);
@@ -288,7 +287,6 @@
     .shadow-xl {
       box-shadow: 0 14px 40px rgba(179,147,126,0.15), 0 4px 12px rgba(0,0,0,0.1);
     }
-    /* --- Custom Label Style for Heading --- */
     .generator-label-unique {
       display: inline-flex;
       align-items: center;
@@ -331,9 +329,108 @@
       box-shadow: 0 8px 28px -8px var(--brown-btn-hover);
       color: #fff;
     }
+
+    /* --- Loading Overlay --- */
+    #loadingOverlay {
+      position: fixed;
+      z-index: 99999;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: linear-gradient(120deg, var(--brown-hero-from) 70%, var(--brown-btn-hover) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.7s cubic-bezier(.57,.21,.69,1.25), visibility 0.7s;
+      opacity: 1;
+      visibility: visible;
+    }
+    #loadingOverlay.fade-out {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    .loading-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.7em;
+      background: var(--brown-glass-bg);
+      padding: 2.2em 2em;
+      border-radius: 2em;
+      box-shadow: 0 14px 40px rgba(179,147,126,0.15), 0 4px 12px rgba(0,0,0,0.1);
+      border: 2.5px solid var(--brown-glass-border);
+      backdrop-filter: blur(var(--glass-blur));
+      max-width: 95vw;
+    }
+    .loading-logo {
+      height: 62px; width: 62px;
+      margin-bottom: 0;
+      border-radius: 18px;
+      border: 3px solid var(--brown-accent);
+      background: #fff;
+      object-fit: contain;
+      box-shadow: 0 10px 28px -8px var(--brown-accent);
+      animation: logo-bounce 1.7s infinite cubic-bezier(.57,.21,.69,1.25);
+    }
+    @media (min-width: 600px) {
+      .loading-logo { height: 82px; width: 82px; }
+    }
+    @keyframes logo-bounce {
+      0%, 100% { transform: translateY(0);}
+      30% { transform: translateY(-12px);}
+      60% { transform: translateY(-5px);}
+    }
+    /* DaisyUI spinner custom color */
+    .daisy-spinner .mask {
+      stroke: var(--brown-btn-hover) !important;
+    }
+    .daisy-spinner .loading-ring {
+      stroke: var(--brown-accent) !important;
+    }
+    .loading-title {
+      font-size: 1.18rem;
+      font-weight: 800;
+      color: var(--brown-accent);
+      letter-spacing: 0.012em;
+      text-align: center;
+      text-shadow: 0 2px 8px #fff2;
+    }
+    .loading-desc {
+      font-size: 0.98rem;
+      color: var(--brown-dark);
+      text-align: center;
+      opacity: 0.85;
+      font-weight: 600;
+    }
+    @media (max-width: 700px) {
+      .loading-inner {
+        padding: 1.3em 1em;
+        border-radius: 1.2em;
+        gap: 1.3em;
+      }
+      .loading-title { font-size: 1.04rem;}
+      .loading-desc { font-size: 0.93rem;}
+    }
   </style>
 </head>
 <body class="bg-gradient-brown font-sans text-brown">
+  <!-- Loading Overlay Start -->
+  <div id="loadingOverlay">
+    <div class="loading-inner">
+      <img src="H56.png" alt="Logo Loading" class="loading-logo" />
+      <!-- DaisyUI spinner -->
+      <span class="loading loading-spinner daisy-spinner loading-lg" style="color: var(--brown-accent);"></span>
+      <div class="loading-title">
+        H56 Read More Generator
+      </div>
+      <div class="loading-desc">
+        Memuat aplikasi...<br>
+        Estetik & responsif, silakan tunggu sebentar.
+      </div>
+    </div>
+  </div>
+  <!-- Loading Overlay End -->
+
   <!-- Particles background -->
   <div id="particles-js"></div>
   <main class="max-w-2xl mx-auto p-4 md:p-8 fade-in" style="position:relative; z-index:1;">
@@ -678,6 +775,14 @@
     window.onload = function() {
       updateFlatSeparatorVisibility();
       generate();
+      // Hide loading overlay after everything ready
+      setTimeout(function() {
+        var overlay = document.getElementById('loadingOverlay');
+        overlay.classList.add('fade-out');
+        setTimeout(function() {
+          overlay.style.display = 'none';
+        }, 800);
+      }, 900); // You can adjust loading duration here
     };
   </script>
 </body>
