@@ -7,10 +7,10 @@
   <meta name="description" content="H56 Read More Generator oleh Muhammad Ali Hasyim - Buat pesan WhatsApp, Telegram, dan platform lain dengan fitur read more, termasuk mode sembunyi datar (inline) profesional. Praktis, responsif, dan mudah digunakan untuk kebutuhan chat modern Anda.">
   <meta name="author" content="Muhammad Ali Hasyim">
   <link rel="icon" type="image/png" href="H56.png">
-  <!-- Font: Poppins & Mochiy Pop One (Kawaii) -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&family=Mochiy+Pop+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" />
+  <!-- Font Awesome CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
     :root {
@@ -26,8 +26,6 @@
       --brown-dark: #3a2415;
       --brown-light: #f7e9dc;
       --glass-blur: 16px;
-      --cute-pink: #fdd0eb;
-      --cute-purple: #bfa5f8;
     }
     body {
       font-family: 'Poppins', sans-serif;
@@ -37,104 +35,134 @@
       position: relative;
       z-index: 1;
     }
-    /* Kawaii Heading Font */
-    .kawaii-heading {
-      font-family: 'Mochiy Pop One', 'Poppins', sans-serif;
-      letter-spacing: -0.03em;
-      font-size: 3.2rem;
-      background: linear-gradient(92deg, var(--cute-pink) 0%, var(--cute-purple) 70%, var(--brown-btn-hover) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      text-fill-color: transparent;
-      text-shadow: 0 2px 16px #e3c3e9, 0 0px 2px #e3c3e9;
-      font-weight: 900;
-      margin-top: 0.5em;
-      margin-bottom: 0.2em;
-      transition: font-size 0.2s;
+    #particles-js {
+      position: fixed;
+      width: 100vw;
+      height: 100vh;
+      top: 0;
+      left: 0;
+      z-index: 0;
+      pointer-events: none;
+      background: transparent;
     }
-    @media (min-width: 768px) {
-      .kawaii-heading {
-        font-size: 4.5rem;
-      }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(25px); }
+      to { opacity: 1; transform: translateY(0); }
     }
-    /* Card Layout Improvements */
+    .fade-in { animation: fadeIn 0.7s cubic-bezier(.57,.21,.69,1.25) both; }
+    .btn-glow:hover {
+      box-shadow: 0 0 22px 4px rgba(179,147,126,0.15), 0 2px 8px rgba(179,147,126,0.10);
+      background: var(--brown-btn-hover);
+      color: #fff;
+      transform: translateY(-2px) scale(1.04);
+    }
     .glass-card {
       background: var(--brown-glass-bg);
       backdrop-filter: blur(var(--glass-blur));
       border: 2px solid var(--brown-glass-border);
       box-shadow: var(--brown-glass-shadow);
-      border-radius: 2.2rem;
-      padding: 2.2rem;
-      margin-bottom: 2.5rem;
-      transition: box-shadow .3s cubic-bezier(.57,.21,.69,1.25);
     }
-    .glass-card:hover {
-      box-shadow: 0 18px 48px rgba(179,147,126,0.22), 0 4px 16px rgba(0,0,0,0.11);
+    .btn-animate:active {
+      transform: scale(0.97);
+      box-shadow: 0 0 0 0 rgba(179,147,126,0.0);
+    }
+    .icon-rotate { transition: transform 0.3s cubic-bezier(.57,.21,.69,1.25);}
+    .btn:active .icon-rotate { transform: rotate(-20deg) scale(1.12);}
+    .range-info::-webkit-slider-thumb {
+      background: var(--brown-accent) !important;
+      box-shadow: 0 0 0 3px var(--brown-light);
+    }
+    .range-info::-moz-range-thumb { background: var(--brown-accent) !important;}
+    .range-info::-ms-thumb { background: var(--brown-accent) !important;}
+    @media (max-width: 600px) {.fade-in {animation-duration: 1s;}}
+    .toast {z-index: 9999;}
+    #flatSeparatorWrap { display: none;}
+    .show-flat-separator { display: block !important; animation: fadeIn 0.5s;}
+    -brown { color: var(--brown-dark);}
+    .bg-brown { background: var(--brown-btn);}
+    .bg-brown-light { background: var(--brown-light);}
+    .border-brown { border-color: var(--brown-glass-border);}
+    .shadow-brown { box-shadow: var(--brown-glass-shadow);}
+    .bg-gradient-brown {
+      background: var(--brown-hero-from);
+    }
+    .select, .input, .textarea {
+      background: #f9f6f2 !important;
+      border-color: var(--brown-glass-border) !important;
+      color: var(--brown-dark) !important;
+      font-weight: 500;
+      font-size: 1rem;
+      letter-spacing: 0.03em;
+    }
+    .select:focus, .input:focus, .textarea:focus {
+      border-color: var(--brown-accent) !important;
+      box-shadow: 0 0 0 2px var(--brown-accent) !important;
+    }
+    .btn-info, .btn-outline.btn-info {
+      background: var(--brown-btn);
+      color: #fff;
       border-color: var(--brown-accent);
+      font-weight: 600;
+      font-size: 1.08rem;
     }
-    .card-body {
-      display: flex;
-      flex-direction: column;
-      gap: 2.5rem;
-      padding: 0;
-    }
-    /* Inputs grid improved */
-    .inputs-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2.2rem;
-    }
-    @media (max-width: 900px) {
-      .inputs-grid {
-        grid-template-columns: 1fr;
-        gap: 1.3rem;
-      }
-    }
-    /* Options grid improved */
-    .options-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1.5rem;
-      align-items: end;
-    }
-    @media (max-width: 900px) {
-      .options-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 1rem;
-      }
-    }
-    @media (max-width: 600px) {
-      .options-grid {
-        grid-template-columns: 1fr;
-        gap: 0.6rem;
-      }
-    }
-    /* Button Glow and Animation */
-    .btn-glow:hover {
-      box-shadow: 0 0 22px 4px var(--cute-pink), 0 2px 8px rgba(179,147,126,0.10);
+    .btn-outline.btn-info:hover, .btn-info:hover {
       background: var(--brown-btn-hover);
       color: #fff;
-      transform: translateY(-2px) scale(1.04);
     }
-    .btn-kawaii {
-      background: linear-gradient(94deg, var(--cute-pink) 60%, var(--cute-purple) 100%);
-      color: var(--brown-accent) !important;
-      font-family: 'Mochiy Pop One', 'Poppins', sans-serif;
-      font-weight: 700;
-      font-size: 1.2rem;
-      border-radius: 2em;
-      border: 2px solid var(--brown-glass-border);
-      transition: background .3s, box-shadow .3s;
-      box-shadow: 0 3px 16px -8px var(--cute-purple);
+    .btn-ghost {
+      color: var(--brown-accent);
+      font-weight: 600;
     }
-    .btn-kawaii:hover, .btn-kawaii:focus {
-      background: linear-gradient(94deg, var(--cute-purple) 60%, var(--cute-pink) 100%);
-      color: #fff !important;
-      box-shadow: 0 8px 28px -8px var(--cute-pink);
+    .alert-info {
+      background: var(--brown-light);
+      color: var(--brown-dark);
       border-color: var(--brown-accent);
+      font-weight: 600;
     }
-    /* Result Area */
+    ::selection {
+      background: var(--brown-accent);
+      color: #fff;
+    }
+    .logo-h56 {
+      height: 72px;
+      width: 72px;
+      margin-bottom: 16px;
+      box-shadow: 0 10px 28px -8px var(--brown-accent);
+      border-radius: 18px;
+      object-fit: contain;
+      background: #fff;
+      border: 3px solid var(--brown-accent);
+      display: inline-block;
+    }
+    .main-heading {
+      font-size: 2.9rem;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      line-height: 1.13;
+      color: var(--brown-dark);
+    }
+    @media (min-width: 768px) {
+      .main-heading {
+        font-size: 4.3rem;
+      }
+      .logo-h56 {
+        height: 96px;
+        width: 96px;
+        margin-bottom: 22px;
+      }
+    }
+    .label-text {
+      font-size: 1.08rem !important;
+      font-weight: 700 !important;
+      color: var(--brown-accent) !important;
+      letter-spacing: 0.01em;
+    }
+    .result-label {
+      font-size: 1.05rem !important;
+      font-weight: 800 !important;
+      color: var(--brown-accent) !important;
+      letter-spacing: 0.01em;
+    }
     .result-area {
       font-size: 1.08rem;
       font-weight: 600;
@@ -143,10 +171,18 @@
       border: 2px solid var(--brown-btn-hover) !important;
       box-shadow: 0 0 16px rgba(179,147,126,0.11);
       resize: vertical;
-      border-radius: 1.5em;
-      padding: 1.2em;
     }
-    /* Footer Styling */
+    .card-body {
+      padding: 1.5rem 0.8rem;
+    }
+    .input, .select, .textarea {
+      font-size: 1.01rem;
+    }
+    .info-tip {
+      color: var(--brown-accent) !important;
+      font-weight: 600;
+      padding: 2px 0;
+    }
     .footer {
       background: var(--brown-glass-bg);
       border-top: 2px solid var(--brown-glass-border);
@@ -163,26 +199,45 @@
       font-weight: 600;
       font-size: 1.03rem;
     }
-    /* Footer Social Buttons Cute */
+    .footer-main-wrap {
+      width: 100%;
+      max-width: 700px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1em;
+    }
+    .footer-social {
+      width: 100%;
+      margin-top: 0.5rem;
+      margin-bottom: 0.9rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(180px,1fr));
+      gap: 1.2em;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
     .footer-social a {
-      background: linear-gradient(90deg, var(--cute-pink) 70%, #fff8 100%);
-      border-radius: 18px;
-      padding: 0.45em 1em;
-      color: var(--brown-accent);
-      font-size: 1.18rem;
-      font-weight: 700;
-      text-decoration: none;
-      border: 1.5px solid var(--brown-glass-border);
-      transition: background 0.22s, color 0.22s, box-shadow 0.22s, transform 0.19s;
-      box-shadow: 0 2px 8px -6px var(--brown-accent);
       display: flex;
       align-items: center;
+      justify-content: center;
       gap: 0.5em;
+      font-size: 1.18rem;
+      font-weight: 700;
+      color: var(--brown-accent);
+      background: var(--brown-light);
+      border-radius: 18px;
+      padding: 0.45em 1em;
+      text-decoration: none;
+      transition: background 0.22s, color 0.22s, box-shadow 0.22s;
+      box-shadow: 0 2px 8px -6px var(--brown-accent);
+      border: 1.5px solid var(--brown-glass-border);
     }
     .footer-social a:hover {
-      background: linear-gradient(90deg, var(--cute-purple) 40%, var(--cute-pink) 100%);
+      background: var(--brown-accent);
       color: #fff;
-      box-shadow: 0 6px 26px -8px var(--cute-purple);
+      box-shadow: 0 6px 26px -8px var(--brown-accent);
       transform: translateY(-2px) scale(1.07);
     }
     .footer-social i {
@@ -215,58 +270,73 @@
       color: var(--brown-btn-hover);
       font-weight: 800;
     }
-    /* Misc */
-    .main-heading {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-bottom: 0.5em;
-    }
-    .logo-h56 {
-      height: 80px;
-      width: 80px;
-      margin-bottom: 20px;
-      border-radius: 20px;
-      object-fit: contain;
-      background: #fff;
-      border: 3px solid var(--brown-accent);
-      display: inline-block;
-      box-shadow: 0 10px 28px -8px var(--brown-accent);
-      transition: box-shadow 0.25s;
-    }
-    .logo-h56:hover {
-      box-shadow: 0 12px 32px -8px var(--cute-pink);
-    }
-    /* Responsive */
     @media (max-width: 640px) {
-      .glass-card { padding: 1.1rem; border-radius: 1.2rem;}
-      .footer { padding: 1.4rem 0.6rem 0.7rem 0.6rem; border-radius: 22px 22px 0 0;}
-      .footer-main-wrap { max-width: 99vw; gap: 0.7em;}
+      .footer {
+        padding: 1.4rem 0.6rem 0.7rem 0.6rem;
+        border-radius: 22px 22px 0 0;
+        font-size: 0.97rem;
+      }
+      .footer-main-wrap {
+        max-width: 99vw;
+        gap: 0.7em;
+      }
       .footer-info { font-size: 0.99rem; padding: 0.45em 0.5em;}
       .footer-social { grid-template-columns: 1fr; gap: 0.7em;}
       .footer-social a { font-size: 1rem; padding: 0.3em 0.6em;}
     }
-    /* DaisyUI spinner custom color */
-    .daisy-spinner .mask { stroke: var(--brown-btn-hover) !important;}
-    .daisy-spinner .loading-ring { stroke: var(--brown-accent) !important;}
-    /* Toast */
-    .toast {z-index: 9999;}
-    /* Flat Separator Option */
-    #flatSeparatorWrap { display: none;}
-    .show-flat-separator { display: block !important; animation: fadeIn 0.5s;}
-    /* Animations */
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(25px); }
-      to { opacity: 1; transform: translateY(0); }
+    .shadow-xl {
+      box-shadow: 0 14px 40px rgba(179,147,126,0.15), 0 4px 12px rgba(0,0,0,0.1);
     }
-    .fade-in { animation: fadeIn 0.7s cubic-bezier(.57,.21,.69,1.25) both;}
-    /* Loading Overlay */
+    .generator-label-unique {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6em;
+      padding: 0.37em 1.18em 0.37em 1.35em;
+      background: linear-gradient(92deg, var(--brown-btn-hover) 0%, var(--brown-accent) 65%, var(--brown-btn) 100%);
+      border-radius: 28px;
+      box-shadow: 0 4px 16px -4px var(--brown-btn-hover);
+      font-size: 1.18rem;
+      font-weight: 800;
+      color: #fff;
+      margin-top: 1.1em;
+      margin-bottom: 0.5em;
+      letter-spacing: 0.012em;
+      border: 2.5px solid var(--brown-accent);
+      position: relative;
+      z-index: 2;
+      transition: background 0.3s cubic-bezier(.57,.21,.69,1.25);
+      user-select: none;
+    }
+    .generator-label-unique:before {
+      content: "⚡";
+      font-size: 1.25em;
+      filter: drop-shadow(0 0 8px #fff3);
+      margin-right: 0.5em;
+      text-shadow: 0 2px 8px var(--brown-btn-hover);
+    }
+    .generator-label-unique span {
+      background: linear-gradient(90deg, #fff9 0%, #fff3 100%);
+      padding: 0.16em 0.65em;
+      border-radius: 15px;
+      color: var(--brown-accent);
+      font-weight: 900;
+      font-size: 1.02em;
+      margin-left: 0.3em;
+      box-shadow: 0 1px 10px -5px #fff5;
+    }
+    .generator-label-unique:hover {
+      background: linear-gradient(98deg, var(--brown-accent) 0%, var(--brown-btn-hover) 70%, var(--brown-btn) 100%);
+      box-shadow: 0 8px 28px -8px var(--brown-btn-hover);
+      color: #fff;
+    }
+
+    /* --- Loading Overlay --- */
     #loadingOverlay {
       position: fixed;
       z-index: 99999;
       top: 0; left: 0;
       width: 100vw; height: 100vh;
-      background: linear-gradient(120deg, var(--brown-hero-from) 70%, var(--cute-pink) 100%);
+      background: linear-gradient(120deg, var(--brown-hero-from) 70%, var(--brown-btn-hover) 100%);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -302,11 +372,44 @@
       box-shadow: 0 10px 28px -8px var(--brown-accent);
       animation: logo-bounce 1.7s infinite cubic-bezier(.57,.21,.69,1.25);
     }
-    @media (min-width: 600px) { .loading-logo { height: 82px; width: 82px; } }
+    @media (min-width: 600px) {
+      .loading-logo { height: 82px; width: 82px; }
+    }
     @keyframes logo-bounce {
       0%, 100% { transform: translateY(0);}
       30% { transform: translateY(-12px);}
       60% { transform: translateY(-5px);}
+    }
+    /* DaisyUI spinner custom color */
+    .daisy-spinner .mask {
+      stroke: var(--brown-btn-hover) !important;
+    }
+    .daisy-spinner .loading-ring {
+      stroke: var(--brown-accent) !important;
+    }
+    .loading-title {
+      font-size: 1.18rem;
+      font-weight: 800;
+      color: var(--brown-accent);
+      letter-spacing: 0.012em;
+      text-align: center;
+      text-shadow: 0 2px 8px #fff2;
+    }
+    .loading-desc {
+      font-size: 0.98rem;
+      color: var(--brown-dark);
+      text-align: center;
+      opacity: 0.85;
+      font-weight: 600;
+    }
+    @media (max-width: 700px) {
+      .loading-inner {
+        padding: 1.3em 1em;
+        border-radius: 1.2em;
+        gap: 1.3em;
+      }
+      .loading-title { font-size: 1.04rem;}
+      .loading-desc { font-size: 0.93rem;}
     }
   </style>
 </head>
@@ -315,11 +418,12 @@
   <div id="loadingOverlay">
     <div class="loading-inner">
       <img src="H56.png" alt="Logo Loading" class="loading-logo" />
+      <!-- DaisyUI spinner -->
       <span class="loading loading-spinner daisy-spinner loading-lg" style="color: var(--brown-accent);"></span>
-      <div class="loading-title kawaii-heading" style="font-size:2rem;">
+      <div class="loading-title">
         H56 Read More Generator
       </div>
-      <div class="loading-desc" style="font-family:'Poppins',sans-serif;">
+      <div class="loading-desc">
         Memuat aplikasi...<br>
         Estetik & responsif, silakan tunggu sebentar.
       </div>
@@ -329,17 +433,18 @@
 
   <!-- Particles background -->
   <div id="particles-js"></div>
-  <main class="max-w-3xl mx-auto p-4 md:p-10 fade-in" style="position:relative; z-index:1;">
+  <main class="max-w-2xl mx-auto p-4 md:p-8 fade-in" style="position:relative; z-index:1;">
     <!-- Header -->
-    <section class="text-center mb-10 main-heading">
+    <section class="text-center mb-10">
       <img src="H56.png" alt="H56 Logo" class="logo-h56 mx-auto" />
-      <h1 class="kawaii-heading drop-shadow-sm tracking-tight">
-        H56 Read More Generator
+      <h1 class="main-heading font-extrabold drop-shadow-sm tracking-tight">
+        <span class="bg-gradient-to-r from-[var(--brown-accent)] via-[var(--brown-btn-hover)] to-[var(--brown-btn)] bg-clip-text text-transparent">H56 Read More Generator</span>
       </h1>
-      <div class="generator-label-unique mx-auto inline-block" style="margin-bottom:0;">
+      <!-- Unique Generator Label -->
+      <div class="generator-label-unique mx-auto inline-block">
         Created by <span>Muhammad Ali Hasyim</span>
       </div>
-      <p class="mt-3 text-brown text-lg md:text-xl font-semibold info-tip">
+      <p class="mt-5 text-brown text-lg md:text-xl font-semibold info-tip">
         Buat pesan dengan <span class="font-extrabold" style="color: var(--brown-accent);">read more</span> tersembunyi untuk WhatsApp, Telegram, dll.
       </p>
       <div class="mt-2 text-sm" style="color: var(--brown-accent); font-weight:700;">
@@ -352,25 +457,25 @@
     </section>
 
     <!-- Card -->
-    <div class="glass-card transition-all duration-300 shadow-xl">
-      <div class="card-body">
+    <div class="glass-card rounded-3xl p-5 md:p-8 transition-all duration-300 hover:shadow-brown shadow-xl">
+      <div class="card-body space-y-10">
 
         <!-- Inputs grid -->
-        <div class="inputs-grid">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
           <!-- Teks Depan -->
           <div>
             <label class="label"><span class="label-text">Teks depan</span></label>
-            <textarea id="frontText" class="textarea textarea-bordered w-full h-44 rounded-xl focus:outline-none transition-all" placeholder="Teks yang terlihat sebelum ‘Read more’..." style="font-family:'Poppins',sans-serif;"></textarea>
+            <textarea id="frontText" class="textarea textarea-bordered w-full h-44 rounded-xl focus:outline-none transition-all" placeholder="Teks yang terlihat sebelum ‘Read more’..."></textarea>
           </div>
           <!-- Teks Belakang -->
           <div>
             <label class="label"><span class="label-text">Teks belakang (tersembunyi)</span></label>
-            <textarea id="backText" class="textarea textarea-bordered w-full h-44 rounded-xl focus:outline-none transition-all" placeholder="Teks yang muncul setelah dibuka…" style="font-family:'Poppins',sans-serif;"></textarea>
+            <textarea id="backText" class="textarea textarea-bordered w-full h-44 rounded-xl focus:outline-none transition-all" placeholder="Teks yang muncul setelah dibuka…"></textarea>
           </div>
         </div>
 
         <!-- Options -->
-        <div class="options-grid mt-2">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-7 items-end">
           <!-- Preset -->
           <div>
             <label class="label"><span class="label-text">Preset platform</span></label>
@@ -389,15 +494,9 @@
               <span>Ringan</span><span>Default</span><span>Kuat</span>
             </div>
           </div>
-          <!-- Flat Separator Option (hidden by default) -->
-          <div id="flatSeparatorWrap">
-            <label class="label"><span class="label-text">Teks pemicu read more (default: ...read more)</span></label>
-            <input id="flatSeparator" type="text" class="input input-bordered w-full rounded-xl focus:outline-none bg-brown-light" value="...read more" maxlength="25" autocomplete="off" />
-            <div class="text-xs mt-1 info-tip">Contoh: ...read more, [read more], dst. Setelah diklik akan digantikan oleh teks belakang dan tetap sejajar dalam satu baris.</div>
-          </div>
           <!-- Tombol Generate -->
-          <div class="flex w-full items-end">
-            <button id="generateBtn" class="btn btn-kawaii btn-block font-semibold shadow-md btn-glow btn-animate transition-all flex gap-2 items-center justify-center">
+          <div class="flex sm:justify-end w-full">
+            <button id="generateBtn" class="btn btn-info btn-block sm:btn-wide font-semibold rounded-xl shadow-md btn-glow btn-animate transition-all flex gap-2 items-center justify-center">
               <span class="icon-rotate">
                 <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M12 5v14m0 0l-5-5m5 5l5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </span>
@@ -409,10 +508,17 @@
           </div>
         </div>
 
+        <!-- Flat Separator Option (hidden by default) -->
+        <div id="flatSeparatorWrap" class="mt-2">
+          <label class="label"><span class="label-text">Teks pemicu read more (default: ...read more)</span></label>
+          <input id="flatSeparator" type="text" class="input input-bordered w-full rounded-xl focus:outline-none bg-brown-light" value="...read more" maxlength="25" autocomplete="off" />
+          <div class="text-xs mt-1 info-tip">Contoh: ...read more, [read more], dst. Setelah diklik akan digantikan oleh teks belakang dan tetap sejajar dalam satu baris.</div>
+        </div>
+
         <!-- Output -->
         <div>
           <label class="label"><span class="result-label">Result (siap disalin)</span></label>
-          <textarea id="result" class="textarea result-area w-full h-52" readonly placeholder="Hasil akan muncul di sini…" style="font-family:'Poppins',sans-serif;"></textarea>
+          <textarea id="result" class="textarea result-area w-full h-52 rounded-xl focus:outline-none bg-brown-light" readonly placeholder="Hasil akan muncul di sini…"></textarea>
           <div class="mt-4 flex flex-wrap gap-3">
             <button id="copyBtn" class="btn btn-outline btn-info rounded-xl shadow-sm btn-glow btn-animate flex gap-2 items-center">
               <span class="icon-rotate">
@@ -461,31 +567,90 @@
 
   <!-- particles.js library -->
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <!-- Particles config: warna cokelat -->
   <script>
     particlesJS('particles-js', {
       particles: {
-        number: { value: 80, density: { enable: true, value_area: 800 } },
-        color: { value: ['#b3937e', '#a0754e', '#7a5431', '#fdd0eb','#bfa5f8'] },
-        shape: { type: 'circle', stroke: { width: 0, color: '#7a5431' }},
-        opacity: { value: 0.6, random: true, anim: { enable: true, speed: 1, opacity_min: 0.1, sync: false }},
-        size: { value: 5, random: true, anim: { enable: false, speed: 4, size_min: 0.1, sync: false }},
-        line_linked: { enable: true, distance: 150, color: '#a0754e', opacity: 0.3, width: 1 },
-        move: { enable: true, speed: 6, direction: 'none', random: false, straight: false, out_mode: 'out', bounce: false }
+        number: {
+          value: 80,
+          density: {
+            enable: true,
+            value_area: 800
+          }
+        },
+        color: {
+          value: ['#b3937e', '#a0754e', '#7a5431']
+        },
+        shape: {
+          type: 'circle',
+          stroke: {
+            width: 0,
+            color: '#7a5431'
+          }
+        },
+        opacity: {
+          value: 0.6,
+          random: true,
+          anim: {
+            enable: true,
+            speed: 1,
+            opacity_min: 0.1,
+            sync: false
+          }
+        },
+        size: {
+          value: 5,
+          random: true,
+          anim: {
+            enable: false,
+            speed: 4,
+            size_min: 0.1,
+            sync: false
+          }
+        },
+        line_linked: {
+          enable: true,
+          distance: 150,
+          color: '#a0754e',
+          opacity: 0.3,
+          width: 1
+        },
+        move: {
+          enable: true,
+          speed: 6,
+          direction: 'none',
+          random: false,
+          straight: false,
+          out_mode: 'out',
+          bounce: false
+        }
       },
       interactivity: {
         detect_on: 'canvas',
         events: {
-          onhover: { enable: true, mode: 'repulse' },
-          onclick: { enable: true, mode: 'push' }
+          onhover: {
+            enable: true,
+            mode: 'repulse'
+          },
+          onclick: {
+            enable: true,
+            mode: 'push'
+          }
         },
         modes: {
-          repulse: { distance: 100, duration: 0.4 },
-          push: { particles_nb: 4 }
+          repulse: {
+            distance: 100,
+            duration: 0.4
+          },
+          push: {
+            particles_nb: 4
+          }
         }
       },
       retina_detect: true
     });
   </script>
+
   <!-- Main app JS -->
   <script>
     function makeInvisibleBlock(lines, zwsPerLine) {
@@ -494,14 +659,17 @@
       const oneLine = zws + brailleBlank;
       return ("\n" + oneLine).repeat(lines) + "\n";
     }
+
     function makeFlatHidden(separator, front, strength) {
       let base = 2700;
       let mult = { 1: 0.55, 2: 0.8, 3: 1.0, 4: 1.35, 5: 1.7 }[strength] || 1.0;
       let total = Math.floor((base + separator.length + front.length) * mult);
+
       let zws = "\u200B".repeat(total);
       let brailleBlank = "\u2800".repeat(Math.max(1, Math.floor(total / 4)));
       return zws + brailleBlank;
     }
+
     function getPresetConfig(preset, strength) {
       const base = { lines: 25, zws: 200 };
       const mult = { 1: 0.6, 2: 0.85, 3: 1.0, 4: 1.35, 5: 1.8 }[strength] || 1.0;
@@ -509,18 +677,21 @@
       switch (preset) {
         case 'telegram': platformAdj = 0.85; break;
         case 'generic': platformAdj = 0.9; break;
-        case 'whatsapp': default: platformAdj = 1.0;
+        case 'whatsapp':
+        default: platformAdj = 1.0;
       }
       return {
         lines: Math.ceil(base.lines * mult * platformAdj),
         zws: Math.ceil(base.zws * mult)
       };
     }
+
     function showLoading(btn, show) {
       document.getElementById('loadingSpin').classList.toggle('hidden', !show);
       btn.disabled = show;
       btn.classList.toggle('btn-disabled', show);
     }
+
     function updateFlatSeparatorVisibility() {
       var preset = document.getElementById('preset').value;
       var wrap = document.getElementById('flatSeparatorWrap');
@@ -530,6 +701,7 @@
         wrap.classList.remove('show-flat-separator');
       }
     }
+
     function generate() {
       const btn = document.getElementById('generateBtn');
       showLoading(btn, true);
@@ -554,6 +726,7 @@
         showLoading(btn, false);
       }, 350);
     }
+
     async function copyResult() {
       const text = document.getElementById('result').value;
       if (!text) return;
@@ -567,6 +740,7 @@
         toast('Disalin (fallback) ✅');
       }
     }
+
     function clearAll() {
       document.getElementById('frontText').value = '';
       document.getElementById('backText').value = '';
@@ -574,6 +748,7 @@
       toast('Form dibersihkan');
       generate();
     }
+
     function toast(message) {
       const t = document.createElement('div');
       t.className = 'toast toast-end';
@@ -581,18 +756,22 @@
       document.body.appendChild(t);
       setTimeout(() => t.remove(), 1500);
     }
+
     document.getElementById('generateBtn').addEventListener('click', generate);
     document.getElementById('copyBtn').addEventListener('click', copyResult);
     document.getElementById('clearBtn').addEventListener('click', clearAll);
+
     ['frontText','backText','preset','strength','flatSeparator'].forEach(id => {
       document.getElementById(id).addEventListener('input', () => {
         queueMicrotask(generate);
       });
     });
+
     document.getElementById('preset').addEventListener('change', () => {
       updateFlatSeparatorVisibility();
       queueMicrotask(generate);
     });
+
     window.onload = function() {
       updateFlatSeparatorVisibility();
       generate();
@@ -603,7 +782,7 @@
         setTimeout(function() {
           overlay.style.display = 'none';
         }, 800);
-      }, 900);
+      }, 900); // You can adjust loading duration here
     };
   </script>
 </body>
