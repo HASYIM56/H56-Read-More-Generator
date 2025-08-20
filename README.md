@@ -1,4 +1,4 @@
-# H56 Read More Generator
+# <img src="https://h56-readmore-generator.netlify.app/H56.png" alt="H56 Read More Generator Logo" width="48" style="vertical-align:middle;margin-right:8px;" /> H56 Read More Generator
 
 ![H56 Read More Generator Banner](https://user-images.githubusercontent.com/your-banner-image.png)
 
