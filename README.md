@@ -1,19 +1,24 @@
-# <img src="https://h56-readmore-generator.netlify.app/H56.png" alt="H56 Read More Generator Logo" width="48" style="vertical-align:middle;margin-right:8px;" /> H56 Read More Generator
-
-![H56 Read More Generator Banner](https://user-images.githubusercontent.com/your-banner-image.png)
-
-> **Dibuat oleh Muhammad Ali Hasyim**
+<p align="center">
+  <img src="https://h56-readmore-generator.netlify.app/H56.png" alt="H56 Read More Generator Logo" width="80" style="margin-bottom:16px;" />
+</p>
+<h1 align="center">H56 Read More Generator</h1>
+<p align="center">
+  <b>Dibuat oleh Muhammad Ali Hasyim</b>
+</p>
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/your-banner-image.png" alt="H56 Read More Generator Banner" />
+</p>
 
 ---
 
 ## 🚀 Tentang Project
 
-**H56 Read More Generator** adalah web app untuk membuat pesan dengan efek _read more_ pada WhatsApp, Telegram, dan platform chat lainnya. Dengan fitur ini, Anda bisa menyembunyikan sebagian pesan yang hanya akan muncul setelah penerima mengklik "read more", baik secara multiline maupun _inline_ (sejajar).
+**H56 Read More Generator** adalah web app untuk membuat pesan dengan efek <i>read more</i> pada WhatsApp, Telegram, dan platform chat lainnya. Fitur ini memungkinkan Anda menyembunyikan sebagian pesan yang hanya akan muncul setelah penerima mengklik <b>read more</b>, baik secara multiline maupun <i>inline</i> (sejajar).
 
 Web ini sangat berguna untuk:
 - Tebakan/quiz yang jawabannya ingin disembunyikan
 - Pesan panjang yang ingin diringkas
-- Membuat _spoiler_ chat
+- Membuat <i>spoiler</i> chat
 - Promosi event dengan detail tersembunyi
 
 ---
@@ -31,16 +36,18 @@ Web ini sangat berguna untuk:
 
 ## 🖼️ Tampilan
 
-![Preview H56 Read More Generator](https://user-images.githubusercontent.com/your-preview-image.png)
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/your-preview-image.png" alt="Preview H56 Read More Generator" width="600" />
+</p>
 
 ---
 
 ## ⚡ Cara Menggunakan
 
-1. **Teks Depan:** Tulis pesan yang akan tampil sebelum _read more_.
-2. **Teks Belakang:** Tulis pesan yang akan muncul setelah _read more_ diklik.
+1. **Teks Depan:** Tulis pesan yang akan tampil sebelum <i>read more</i>.
+2. **Teks Belakang:** Tulis pesan yang akan muncul setelah <i>read more</i> diklik.
 3. **Preset Platform:** Pilih WhatsApp, Telegram, Generic, atau Sembunyi Datar (Inline).
-4. **Kekuatan Read More:** Geser untuk atur seberapa kuat efek tersembunyinya.
+4. **Kekuatan Read More:** Geser untuk atur seberapa kuat efek tersembunyi.
 5. _(Optional)_ **Separator:** Untuk mode inline, ubah separator sesuai keinginan.
 6. Klik **Generate**.
 7. Salin hasil dan tempelkan di chat pilihan Anda!
