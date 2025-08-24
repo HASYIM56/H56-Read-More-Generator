@@ -13,14 +13,13 @@
 
 ## 🚀 Tentang Project
 
-**H56 Read More Generator** adalah web app untuk membuat pesan dengan efek <i>read more</i> pada WhatsApp, Telegram, dan platform chat lainnya.  
-Fitur ini memungkinkan Anda menyembunyikan sebagian pesan yang hanya akan muncul setelah penerima mengklik <b>read more</b>, baik secara multiline maupun <i>inline</i> (sejajar).
+**H56 Read More Generator** adalah web app untuk membuat pesan dengan efek <i>read more</i> pada WhatsApp, Telegram, dan platform chat lainnya. Fitur ini memungkinkan Anda menyembunyikan sebagian pesan yang hanya akan muncul setelah penerima mengklik <b>read more</b>, baik secara multiline maupun <i>inline</i> (sejajar).
 
 Web ini sangat berguna untuk:
-- 🎲 Tebakan/quiz yang jawabannya ingin disembunyikan
-- 📜 Pesan panjang yang ingin diringkas
-- 🤫 Membuat <i>spoiler</i> chat
-- 📢 Promosi event dengan detail tersembunyi
+- Tebakan/quiz yang jawabannya ingin disembunyikan
+- Pesan panjang yang ingin diringkas
+- Membuat <i>spoiler</i> chat
+- Promosi event dengan detail tersembunyi
 
 ---
 
@@ -58,109 +57,10 @@ Web ini sangat berguna untuk:
 ## 📱 Contoh Output
 
 ### WhatsApp Multiline
+
 ```text
 Teks depan
 
 (read more akan muncul)
 
 Teks belakang
-```
-
-### WhatsApp Inline
-```text
-Halo...read more
-Halo semuanya!
-```
-
-### Telegram
-```text
-Pesan awal
-
-[read more]
-
-Pesan lanjutan
-```
-
-### Generic Read More
-```text
-Intro
-
-[read more]
-
-Isi tersembunyi
-```
-
----
-
-## 🛠️ Tech Stack
-
-- ⚡ **Frontend:** HTML, TailwindCSS, DaisyUI  
-- 🧩 **Framework:** JavaScript Vanilla + Custom Logic  
-- 🎨 **UI/UX:** Glassmorphism, Animasi modern  
-- 🚀 **Hosting:** Netlify  
-
----
-
-## 📂 Struktur Proyek
-
-```
-H56-Readmore-Generator/
-├── index.html         # Halaman utama
-├── style.css          # Styling tambahan
-├── script.js          # Logika utama generator
-├── /images            # Asset gambar & screenshot
-└── /assets            # Ikon, font, dsb.
-```
-
----
-
-## 📝 Roadmap & Rencana Fitur
-
-- [x] WhatsApp Multiline Generator  
-- [x] WhatsApp Inline Generator  
-- [x] Telegram Preset  
-- [x] Generic Read More  
-- [ ] Dark Mode  
-- [ ] Fitur Auto-Preview di Browser  
-- [ ] Ekspor hasil ke file (txt/md)  
-
----
-
-## 🤝 Kontribusi
-
-Kontribusi selalu terbuka! 🎉  
-Jika Anda ingin menambahkan fitur atau memperbaiki bug:
-
-1. Fork repository ini
-2. Buat branch baru (`git checkout -b fitur-baru`)
-3. Commit perubahan (`git commit -m 'Tambah fitur baru'`)
-4. Push branch (`git push origin fitur-baru`)
-5. Buat Pull Request
-
----
-
-## 📜 Lisensi
-
-Proyek ini dilisensikan di bawah **MIT License** — bebas digunakan, dimodifikasi, dan dibagikan dengan tetap mencantumkan atribusi.
-
----
-
-<!-- Footer Medsos Start -->
-<div align="center">
-
-<b>Temui kami di platform media sosial:</b><br>
-
-<a href="https://youtube.com/@HASYIM56" target="_blank">
-  <img src="https://cdn.jsdelivr.net/gh/edent/SuperTinyIcons/images/svg/youtube.svg" alt="YouTube" width="32" style="border-radius:50%;margin:8px;background:#fff;" />
-</a>
-<a href="https://instagram.com/HASYIM56" target="_blank">
-  <img src="https://cdn.jsdelivr.net/gh/edent/SuperTinyIcons/images/svg/instagram.svg" alt="Instagram" width="32" style="border-radius:50%;margin:8px;background:#fff;" />
-</a>
-<a href="https://t.me/HASYIM56" target="_blank">
-  <img src="https://cdn.jsdelivr.net/gh/edent/SuperTinyIcons/images/svg/telegram.svg" alt="Telegram" width="32" style="border-radius:50%;margin:8px;background:#fff;" />
-</a>
-
-</div>
-<!-- Footer Medsos End -->
-
----
