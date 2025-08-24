@@ -94,6 +94,51 @@ Format mengikuti urutan **versi terbaru → versi lama**.
 
 ---
 
+<p align="center">
+  <img src="https://h56-readmore-generator.netlify.app/H56.png" alt="H56 Logo" width="80" style="margin-bottom:16px;" />
+</p>
+
+<h1 align="center">HASYIM56 Developer</h1>
+
+<p align="center">
+  <b>Kunjungi platform resmi saya untuk konten, modding, dan update terbaru 🚀</b>
+</p>
+
+---
+
+## 🌐 Sosial Media & Platform
+
+<p align="center">
+  <a href="https://youtube.com/@HASYIM56" target="_blank">
+    <img src="https://img.shields.io/badge/Youtube-FF0000?style=for-the-badge&logo=youtube&logoColor=white" alt="YouTube"/>
+  </a>
+  <a href="https://instagram.com/hasyim56_modder" target="_blank">
+    <img src="https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white" alt="Instagram"/>
+  </a>
+  <a href="https://t.me/hasyim56_modder" target="_blank">
+    <img src="https://img.shields.io/badge/Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white" alt="Telegram"/>
+  </a>
+</p>
+
+---
+
+## 👨‍💻 Tentang Developer
+
+Saya adalah **HASYIM56**, seorang modder & developer yang fokus pada:
+- 🔧 Modding & custom tools  
+- 📱 Pengembangan aplikasi berbasis web & mobile  
+- 🧑‍💻 Eksperimen dengan AI & automation  
+
+---
+
+<p align="center">
+  ✨ <b>Terima kasih sudah berkunjung!</b> ✨  
+  <br/>
+  Dukung terus dengan follow sosial media saya 🙌
+</p>
+
+---
+
 ## 📱 Contoh Output
 
 ### WhatsApp Multiline
