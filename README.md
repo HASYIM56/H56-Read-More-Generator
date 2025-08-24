@@ -57,10 +57,3 @@ Web ini sangat berguna untuk:
 ## 📱 Contoh Output
 
 ### WhatsApp Multiline
-
-```text
-Teks depan
-
-(read more akan muncul)
-
-Teks belakang
