@@ -450,6 +450,9 @@
       <div class="mt-2 text-sm" style="color: var(--brown-accent); font-weight:700;">
         <span class="font-semibold">✨ Fitur baru:</span> <span class="bg-brown-light px-2 py-1 rounded-lg" style="color: var(--brown-accent); font-weight:800;">Sembunyi Datar</span>
         (<b>inline:</b> hasil seperti "Halo..read more" jadi "Halo semuanya" setelah diklik readmore dan tetap di satu baris)
+        <br>
+        <span class="font-semibold">✨ Fitur terbaru:</span> <span class="bg-brown-light px-2 py-1 rounded-lg" style="color: var(--brown-accent); font-weight:800;">Inline V2 (Single line)</span>
+        (<b>inline V2:</b> hasil seperti "Halo" + [padding] + "Dunia", tetap satu baris, readmore muncul, cocok untuk WhatsApp.)
       </div>
       <div class="mt-4 text-base font-bold" style="color: var(--brown-btn-hover);">
         <span>Dikembangkan oleh Muhammad Ali Hasyim</span>
@@ -484,10 +487,11 @@
               <option value="telegram">Telegram</option>
               <option value="generic">Generic</option>
               <option value="flat">Sembunyi Datar (inline)</option>
+              <option value="inlinev2">Inline V2 (Single line)</option>
             </select>
           </div>
           <!-- Kekuatan Read More -->
-          <div>
+          <div id="strengthWrap">
             <label class="label"><span class="label-text">Kekuatan Read More</span></label>
             <input id="strength" type="range" min="1" max="5" value="3" class="range range-info" />
             <div class="flex justify-between text-xs opacity-80 px-1 font-semibold info-tip">
@@ -535,8 +539,23 @@
           </div>
           <p class="mt-3 text-xs info-tip">
             💡 <span class="font-bold" style="color: var(--brown-accent);">Tip:</span> Setelah disalin, tempelkan di WhatsApp/Telegram. Bila terlalu pendek, naikkan <em>Kekuatan Read More</em>.<br>
-            <span class="font-semibold" style="color: var(--brown-accent);">Sembunyi Datar</span> cocok untuk pesan yang ingin tetap satu baris seperti: <code>Halo..read more</code> jadi <code>Halo semuanya</code> setelah diklik readmore.
+            <span class="font-semibold" style="color: var(--brown-accent);">Sembunyi Datar</span> cocok untuk pesan yang ingin tetap satu baris seperti: <code>Halo..read more</code> jadi <code>Halo semuanya</code> setelah diklik readmore.<br>
+            <span class="font-semibold" style="color: var(--brown-accent);">Inline V2 (Single line)</span> cocok untuk pesan WhatsApp satu baris, hasil seperti <code>Halo[padding]Dunia</code> tetap satu baris, readmore muncul, lebih konsisten.
           </p>
+        </div>
+        <!-- Inline V2 Output, hidden by default -->
+        <div id="inlineV2ResultWrap" style="display:none;" class="mt-6">
+          <label class="label"><span class="result-label">Result Inline V2 (Single line, siap disalin)</span></label>
+          <textarea id="inlineV2Result" class="textarea result-area w-full h-32 rounded-xl focus:outline-none bg-brown-light" readonly placeholder="Hasil Inline V2 akan muncul di sini…"></textarea>
+          <div class="mt-3 flex flex-wrap gap-3">
+            <button id="inlineV2CopyBtn" class="btn btn-outline btn-info rounded-xl shadow-sm btn-glow btn-animate flex gap-2 items-center">
+              <span class="icon-rotate">
+                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.1" viewBox="0 0 24 24"><path d="M8 16h8a2 2 0 0 0 2-2V8M8 16V18a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2H8z" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 2H6a2 2 0 0 0-2 2v12" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              Salin Inline V2
+            </button>
+          </div>
+          <p class="mt-2 text-xs info-tip">💡 <span class="font-bold" style="color: var(--brown-accent);">Tip:</span> Hasil single line ini cocok untuk WhatsApp, tetap satu baris, "read more" muncul konsisten.</p>
         </div>
       </div>
     </div>
@@ -670,6 +689,14 @@
       return zws + brailleBlank;
     }
 
+    function makeInlineV2(front, back) {
+      const PAD_DEFAULT = 2630;
+      const ZWSP = '\u200B';
+      const padding = ZWSP.repeat(PAD_DEFAULT);
+      // Single line: front + [invisible padding] + back
+      return (front || '') + padding + (back || '');
+    }
+
     function getPresetConfig(preset, strength) {
       const base = { lines: 25, zws: 200 };
       const mult = { 1: 0.6, 2: 0.85, 3: 1.0, 4: 1.35, 5: 1.8 }[strength] || 1.0;
@@ -695,10 +722,31 @@
     function updateFlatSeparatorVisibility() {
       var preset = document.getElementById('preset').value;
       var wrap = document.getElementById('flatSeparatorWrap');
+      var strengthWrap = document.getElementById('strengthWrap');
       if (preset === "flat") {
         wrap.classList.add('show-flat-separator');
+        strengthWrap.style.display = '';
       } else {
         wrap.classList.remove('show-flat-separator');
+        // Untuk preset inlinev2, kekuatan tidak berpengaruh
+        if (preset === "inlinev2") {
+          strengthWrap.style.display = 'none';
+        } else {
+          strengthWrap.style.display = '';
+        }
+      }
+    }
+
+    // Inline V2 Output Logic
+    function updateInlineV2Output(preset, result) {
+      const wrap = document.getElementById('inlineV2ResultWrap');
+      const area = document.getElementById('inlineV2Result');
+      if (preset === "inlinev2") {
+        wrap.style.display = '';
+        area.value = result;
+      } else {
+        wrap.style.display = 'none';
+        area.value = '';
       }
     }
 
@@ -718,11 +766,22 @@
           const invisibleFlat = makeFlatHidden(separator, front, strength);
 
           result = `${front}${separator}${invisibleFlat}${back}`.trim();
-        } else {
+          document.getElementById('result').value = result;
+          updateInlineV2Output(preset, "");
+        }
+        else if (preset === "inlinev2") {
+          result = makeInlineV2(front, back).trim();
+          document.getElementById('result').value = '';
+          updateInlineV2Output(preset, result);
+          showLoading(btn, false);
+          return;
+        }
+        else {
           const hiddenBlock = makeInvisibleBlock(cfg.lines, cfg.zws);
           result = `${front}\n\n${hiddenBlock}\n${back}`.trim();
+          document.getElementById('result').value = result;
+          updateInlineV2Output(preset, "");
         }
-        document.getElementById('result').value = result;
         showLoading(btn, false);
       }, 350);
     }
@@ -741,10 +800,25 @@
       }
     }
 
+    async function copyInlineV2Result() {
+      const text = document.getElementById('inlineV2Result').value;
+      if (!text) return;
+      try {
+        await navigator.clipboard.writeText(text);
+        toast('Hasil Inline V2 disalin ✅');
+      } catch {
+        const area = document.getElementById('inlineV2Result');
+        area.select();
+        document.execCommand('copy');
+        toast('Disalin (fallback) ✅');
+      }
+    }
+
     function clearAll() {
       document.getElementById('frontText').value = '';
       document.getElementById('backText').value = '';
       document.getElementById('result').value = '';
+      document.getElementById('inlineV2Result').value = '';
       toast('Form dibersihkan');
       generate();
     }
@@ -760,6 +834,7 @@
     document.getElementById('generateBtn').addEventListener('click', generate);
     document.getElementById('copyBtn').addEventListener('click', copyResult);
     document.getElementById('clearBtn').addEventListener('click', clearAll);
+    document.getElementById('inlineV2CopyBtn').addEventListener('click', copyInlineV2Result);
 
     ['frontText','backText','preset','strength','flatSeparator'].forEach(id => {
       document.getElementById(id).addEventListener('input', () => {
