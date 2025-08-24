@@ -64,3 +64,21 @@ Teks depan
 (read more akan muncul)
 
 Teks belakang
+
+<!-- Footer Medsos Start -->
+<div align="center">
+
+<b>Temui kami di platform media sosial:</b><br>
+
+<a href="https://youtube.com/@HASYIM56" target="_blank">
+  <img src="https://cdn.jsdelivr.net/gh/edent/SuperTinyIcons/images/svg/youtube.svg" alt="YouTube" width="32" style="border-radius:50%;margin:8px;background:#fff;" />
+</a>
+<a href="https://instagram.com/HASYIM56" target="_blank">
+  <img src="https://cdn.jsdelivr.net/gh/edent/SuperTinyIcons/images/svg/instagram.svg" alt="Instagram" width="32" style="border-radius:50%;margin:8px;background:#fff;" />
+</a>
+<a href="https://t.me/HASYIM56" target="_blank">
+  <img src="https://cdn.jsdelivr.net/gh/edent/SuperTinyIcons/images/svg/telegram.svg" alt="Telegram" width="32" style="border-radius:50%;margin:8px;background:#fff;" />
+</a>
+
+</div>
+<!-- Footer Medsos End -->
