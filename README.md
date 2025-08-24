@@ -64,3 +64,43 @@ Teks depan
 (read more akan muncul)
 
 Teks belakang
+
+---
+
+# 📌 Changelog — H56 Read More Generator
+
+Semua perubahan penting pada project ini akan didokumentasikan di sini.  
+Format mengikuti urutan **versi terbaru → versi lama**.
+
+---
+
+## [v2.0] - 24 Agustus 2025
+### 🚀 Fitur Baru
+- **Inline v2**: Penyempurnaan dari inline v1  
+  - Custom marker otomatis (contoh: 👉 Klik Disini, emoji, teks lain).  
+  - Multi-inline dalam satu pesan.  
+  - Preview langsung di web sebelum disalin.  
+  - Optimasi kompatibilitas WhatsApp & Telegram.  
+
+---
+
+## [v1.2] - 10 Agustus 2025
+### ✨ Penambahan
+- **Custom Separator**: Mode inline kini mendukung penggantian separator sesuai keinginan user.  
+
+---
+
+## [v1.1] - 5 Agustus 2025
+### 🎨 Peningkatan
+- Tampilan UI ditingkatkan dengan **glassmorphism** dan animasi modern berbasis Tailwind + DaisyUI.  
+
+---
+
+## [v1.0] - 1 Agustus 2025
+### 🏁 Rilis Awal
+- Rilis pertama H56 Read More Generator.  
+- Fitur utama:  
+  - WhatsApp Multiline  
+  - Telegram Read More  
+  - Generic Read More  
+  - Inline v1 (sembunyi datar sederhana).
