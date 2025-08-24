@@ -64,26 +64,3 @@ Teks depan
 (read more akan muncul)
 
 Teks belakang
-
----
-
-<!-- Footer Medsos Start -->
-<div align="center" style="margin-top:40px;">
-  <p><b>Temui kami di platform media sosial:</b></p>
-  <a href="https://youtube.com/@HASYIM56" target="_blank" style="text-decoration:none;">
-    <img src="https://cdn.jsdelivr.net/gh/edent/SuperTinyIcons/images/svg/youtube.svg" alt="YouTube" width="32" style="border-radius:50%;margin:8px;background:#fff;" />
-  </a>
-  <a href="https://instagram.com/HASYIM56" target="_blank" style="text-decoration:none;">
-    <img src="https://cdn.jsdelivr.net/gh/edent/SuperTinyIcons/images/svg/instagram.svg" alt="Instagram" width="32" style="border-radius:50%;margin:8px;background:#fff;" />
-  </a>
-  <a href="https://t.me/HASYIM56" target="_blank" style="text-decoration:none;">
-    <img src="https://cdn.jsdelivr.net/gh/edent/SuperTinyIcons/images/svg/telegram.svg" alt="Telegram" width="32" style="border-radius:50%;margin:8px;background:#fff;" />
-  </a>
-</div>
-<!-- Footer Medsos End -->
-
----
-
-<p align="center">
-  <i>Copyright &copy; 2025 Muhammad Ali Hasyim</i>
-</p>
