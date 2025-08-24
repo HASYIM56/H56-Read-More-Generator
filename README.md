@@ -37,7 +37,7 @@ Web ini sangat berguna untuk:
 ## 🖼️ Tampilan
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/your-preview-image.png" alt="Preview H56 Read More Generator" width="600" />
+  <img src="https://h56-readmore-generator.netlify.app/images/Screenshot_20250824_132216_Chrome.jpg" alt="Preview H56 Read More Generator" width="600" />
 </p>
 
 ---
