@@ -6,7 +6,7 @@
   <b>Dibuat oleh Muhammad Ali Hasyim</b>
 </p>
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/your-banner-image.png" alt="H56 Read More Generator Banner" />
+  <img src="https://h56-readmore-generator.netlify.app/images/Screenshot_20250824_132110_Chrome.jpg" alt="H56 Read More Generator Banner" />
 </p>
 
 ---
