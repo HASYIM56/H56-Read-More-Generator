@@ -207,13 +207,13 @@
       align-items: center;
       gap: 1em;
     }
+    /* --- START: Improved Social Button --- */
     .footer-social {
       width: 100%;
-      margin-top: 0.5rem;
-      margin-bottom: 0.9rem;
-      display: grid;
-      grid-template-columns: repeat(auto-fit,minmax(180px,1fr));
-      gap: 1.2em;
+      margin-top: 1.2rem;
+      margin-bottom: 1.1rem;
+      display: flex;
+      gap: 1.4em;
       justify-content: center;
       align-items: center;
       text-align: center;
@@ -222,31 +222,77 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 0.5em;
-      font-size: 1.18rem;
-      font-weight: 700;
-      color: var(--brown-accent);
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
       background: var(--brown-light);
-      border-radius: 18px;
-      padding: 0.45em 1em;
-      text-decoration: none;
-      transition: background 0.22s, color 0.22s, box-shadow 0.22s;
+      border: 2.5px solid var(--brown-btn-hover);
+      box-shadow: 0 2px 14px -6px var(--brown-accent);
+      transition: background 0.24s, color 0.22s, box-shadow 0.22s, transform 0.22s;
+      color: var(--brown-accent);
+      font-size: 1.7rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .footer-social a .social-label {
+      position: absolute;
+      bottom: -34px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--brown-btn-hover);
+      color: #fff;
+      font-size: 0.89rem;
+      font-weight: 700;
+      border-radius: 12px;
+      padding: 0.15em 0.85em;
       box-shadow: 0 2px 8px -6px var(--brown-accent);
-      border: 1.5px solid var(--brown-glass-border);
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.33s;
+      z-index:2;
     }
     .footer-social a:hover {
       background: var(--brown-accent);
       color: #fff;
-      box-shadow: 0 6px 26px -8px var(--brown-accent);
-      transform: translateY(-2px) scale(1.07);
+      box-shadow: 0 8px 26px -8px var(--brown-accent);
+      transform: translateY(-3px) scale(1.09);
+    }
+    .footer-social a:hover .social-label {
+      bottom: -2px;
+      opacity: 1;
+      pointer-events: auto;
     }
     .footer-social i {
       font-size: 1.34em;
       transition: transform 0.22s;
+      z-index:3;
     }
     .footer-social a:hover i {
-      transform: scale(1.18) rotate(-7deg);
+      transform: scale(1.22) rotate(-10deg);
     }
+    @media (max-width: 640px) {
+      .footer {
+        padding: 1.4rem 0.6rem 0.7rem 0.6rem;
+        border-radius: 22px 22px 0 0;
+        font-size: 0.97rem;
+      }
+      .footer-main-wrap {
+        max-width: 99vw;
+        gap: 0.7em;
+      }
+      .footer-info { font-size: 0.99rem; padding: 0.45em 0.5em;}
+      .footer-social { gap: 0.7em;}
+      .footer-social a {
+        width: 44px;
+        height: 44px;
+        font-size: 1.15rem;
+      }
+      .footer-social a .social-label {
+        font-size: 0.81rem;
+        padding: 0.13em 0.55em;
+      }
+    }
+    /* --- END: Improved Social Button --- */
     .footer-info {
       background: linear-gradient(90deg, #f7e9dc 70%, #fff8 100%);
       border-radius: 12px;
@@ -281,8 +327,7 @@
         gap: 0.7em;
       }
       .footer-info { font-size: 0.99rem; padding: 0.45em 0.5em;}
-      .footer-social { grid-template-columns: 1fr; gap: 0.7em;}
-      .footer-social a { font-size: 1rem; padding: 0.3em 0.6em;}
+      .footer-social { gap: 0.7em;}
     }
     .shadow-xl {
       box-shadow: 0 14px 40px rgba(179,147,126,0.15), 0 4px 12px rgba(0,0,0,0.1);
@@ -564,14 +609,17 @@
     <footer class="footer text-center">
       <div class="footer-main-wrap">
         <div class="footer-social">
-          <a href="https://youtube.com/@HASYIM56" target="_blank" rel="noopener">
-            <i class="fab fa-youtube"></i> <span>YouTube @HASYIM56</span>
+          <a href="https://youtube.com/@HASYIM56" target="_blank" rel="noopener" aria-label="YouTube @HASYIM56">
+            <i class="fab fa-youtube"></i>
+            <span class="social-label">YouTube</span>
           </a>
-          <a href="https://instagram.com/hasyim56_modder" target="_blank" rel="noopener">
-            <i class="fab fa-instagram"></i> <span>IG @hasyim56_modder</span>
+          <a href="https://instagram.com/hasyim56_modder" target="_blank" rel="noopener" aria-label="Instagram @hasyim56_modder">
+            <i class="fab fa-instagram"></i>
+            <span class="social-label">Instagram</span>
           </a>
-          <a href="https://github.com/HASYIM56" target="_blank" rel="noopener">
-            <i class="fab fa-github"></i> <span>GitHub HASYIM56</span>
+          <a href="https://github.com/HASYIM56" target="_blank" rel="noopener" aria-label="GitHub HASYIM56">
+            <i class="fab fa-github"></i>
+            <span class="social-label">GitHub</span>
           </a>
         </div>
         <div class="footer-info">
